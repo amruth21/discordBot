@@ -8,7 +8,7 @@ var filePath = path.join(__dirname, 'secret.txt');
 var token = fs.readFileSync(filePath, "utf8");
 var now = new time.Date();
 const PREFIX = '?';
-const guild = bot.guilds.get("491014592688947220");
+//const guild = bot.guilds.get("491014592688947220");
 
 
 //console.log(token);
@@ -37,7 +37,7 @@ bot.on('message', function(msg) {
     */
     now.setTimezone("America/New_York");
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix
-    console.log(args);
+    //console.log(args);
     var arg = ((args[0].toString()).toLowerCase());
     if (arg == 'date') {
         var hours = now.getHours() % 12;
@@ -62,12 +62,23 @@ bot.on('message', function(msg) {
         msg.channel.sendMessage("https://github.com/amruth21")
     }
     if (arg == "who" || args[0] == "whose" || args[0] == "which") {
-
-        //console.log(Array.from(bot.guilds.members).values());
-        console.log(guild.members.get(bot.user.id));
-        //console.log(membersList.memberCount);
-        //membersList.members.forEach(member => console.log(member.user.nickname));
-        //msg.channel.sendMessage(person);
+        var GuildMembers = msg.guild.members;
+        //console.log(lengthy);
+        var mems = [];
+        var nicks = GuildMembers.map(g => g.nickname)
+        var lengthy = nicks.length;
+        var i;
+        for (i = 0; lengthy > i; i++) {
+            if (typeof(nicks[i]) === "string") {
+                //console.log("test");
+                if (nicks[i] != "oRgAnIc BeAnA" && nicks[i] != "irrelevant") {
+                    mems.push(nicks[i]);
+                }
+            }
+        }
+        console.log(mems);
+        var person = mems[Math.floor(Math.random() * mems.length)];
+        msg.channel.sendMessage(person);
     }
     if (arg == "is") {
         var answer;
