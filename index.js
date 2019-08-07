@@ -41,18 +41,22 @@ bot.on('message', function(msg) {
         }
         var date = now.getDate();
 
-        msg.channel.sendMessage("The date is the " + now.getDate() + "th \nThe hour is " + hours + spec);
+        msg.channel.send("The date is the " + now.getDate() + "th \nThe hour is " + hours + spec);
         //console.log(args[0]);
     }
+
     if (arg == 'test') {
-        msg.channel.sendMessage("Nice bruh");
+        msg.channel.send("Nice bruh");
     }
+
     if (arg == 'help') {
-        msg.channel.sendMessage("Availible commands are scuffed(?date, ?test, ?git). This was a waste of my time. If you do ?(Insert Who Question) it will return a person from server. So scuffed smh.");
+        msg.channel.send("Availible commands are scuffed(?date, ?test, ?git). This was a waste of my time. If you do ?(Insert Who Question) it will return a person from server. So scuffed smh.");
     }
+
     if (arg == 'git') {
-        msg.channel.sendMessage("https://github.com/amruth21")
+        msg.channel.send("https://github.com/amruth21")
     }
+
     if (arg == "who" || args[0] == "whose" || args[0] == "which") {
         var GuildMembers = msg.guild.members;
         //console.log(lengthy);
@@ -70,17 +74,19 @@ bot.on('message', function(msg) {
         }
         console.log(mems);
         var person = mems[Math.floor(Math.random() * mems.length)];
-        msg.channel.sendMessage(person);
+        msg.channel.send(person);
     }
-    if (arg == "is" || "will") {
+
+    if (arg == "is" || "will" || "did") {
         var answer;
         if (Math.floor(Math.random() * 10) >= 5) {
             answer = "yes";
         } else {
             answer = "no";
         }
-        msg.channel.sendMessage(answer);
+        msg.channel.send(answer);
     }
+
 });
 
-bot.login(token);
+bot.login(process.env.token);
