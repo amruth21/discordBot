@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const Time = require('date-and-time');
 const time = require('time');
-var filePath = path.join(__dirname, 'secret.txt'); //sike u aint getting that
-var token = fs.readFileSync(filePath, "utf8");
+//var filePath = path.join(__dirname, 'secret.txt'); //sike u aint getting that
+//var token = fs.readFileSync(filePath, "utf8");
 var now = new time.Date();
 const PREFIX = '?';
 
