@@ -22,7 +22,7 @@ fs.readFile(filePath, 'utf8', function(err, contents) {
 */
 
 bot.on('ready', function() {
-    console.log("Its Working");
+    console.log("It's Working");
 });
 
 bot.on('message', function(msg) {
