@@ -80,7 +80,7 @@ bot.on('message', function(msg) {
     if (arg == "is" || "will" || "did") {
         var answer;
         if (Math.floor(Math.random() * 10) >= 5) {
-            answer = "yes";
+            answer = "yessss";
         } else {
             answer = "no";
         }
