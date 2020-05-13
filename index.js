@@ -28,6 +28,12 @@ bot.on('ready', function() {
 });
 
 bot.on('message', function(msg) {
+    var job = new CronJob('* */1 * * * *', function () {
+        console.log('You will see this message every minute');
+    }, null, true, 'America/Los_Angeles');
+    job.start();
+
+
     now.setTimezone("America/New_York");
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
     //console.log(args);
@@ -101,9 +107,6 @@ bot.on('message', function(msg) {
 });
 
 
-var job = new CronJob('* */1 * * * *', function () {
-    console.log('You will see this message every minute');
-}, null, true, 'America/Los_Angeles');
-job.start();
+
 
 bot.login(process.env.BOT_TOKEN);
