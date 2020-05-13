@@ -30,7 +30,7 @@ bot.on('message', function(msg) {
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
     //console.log(args);
     var arg = ((args[0].toString()).toLowerCase());
-    msg.channel.send(arg);
+    
     if (arg =='destroy') {
         bot.destroy();
         bot.login(process.env.BOT_TOKEN);
