@@ -25,12 +25,13 @@ fs.readFile(filePath, 'utf8', function(err, contents) {
 
 bot.on('ready', function() {
     console.log("It's Working");
+    const job = new CronJob('*/10 * * * * *', function () {
+        msg.channel.send('every 10 seconds');
+    });
+    job.start();
 });
 
 bot.on('message', function(msg) {
-    CronJob.schedule('*/10 * * * * *', function () {
-        msg.channel.send('You will see this message every minute');
-    });
     
 
     now.setTimezone("America/New_York");
