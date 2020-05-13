@@ -33,6 +33,7 @@ bot.on('message', function(msg) {
 
     if (arg =='destroy') {
         bot.destroy();
+        bot.login(process.env.BOT_TOKEN);
     }
 
     if (arg == 'date') {
