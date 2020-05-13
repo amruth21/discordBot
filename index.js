@@ -10,6 +10,11 @@ var CronJob = require('cron').CronJob;
 var now = new time.Date();
 const PREFIX = '?';
 
+const job = new CronJob('*/10 * * * * *', function () {
+    msg.channel.send('every 10 seconds');
+});
+job.start();
+
 /*
 fs.readFile(filePath, 'utf8', function(err, contents) {
     if(err){
@@ -25,10 +30,6 @@ fs.readFile(filePath, 'utf8', function(err, contents) {
 
 bot.on('ready', function() {
     console.log("It's Working");
-    const job = new CronJob('*/10 * * * * *', function () {
-        msg.channel.send('every 10 seconds');
-    });
-    job.start();
 });
 
 bot.on('message', function(msg) {
