@@ -29,14 +29,16 @@ bot.on('message', function(msg) {
     now.setTimezone("America/New_York");
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
     //console.log(args);
-    var arg = ((args[0].toString()).toLowerCase());
+    var argx = ((args[0].toString()).toLowerCase());
+    var arg = msg.split(' ')[0];
 
-    if (arg =='destroy') {
+    if (arg =='?destroy') {
+        msg.channel.send("Bot Restarting...")
         bot.destroy();
         bot.login(process.env.BOT_TOKEN);
     }
 
-    if (arg == 'date') {
+    if (arg == '?date') {
         var hours = now.getHours() % 12;
         var spec;
         if (now.getHours >= 12) {
@@ -50,19 +52,19 @@ bot.on('message', function(msg) {
         //console.log(args[0]);
     }
 
-    if (arg == 'test') {
+    if (arg == '?test') {
         msg.channel.send("Nice bruh");
     }
 
-    if (arg == 'help') {
+    if (arg == '?help') {
         msg.channel.send("Availible commands are (?date, ?test, ?git) and some question based commands for fun!");
     }
 
-    if (arg == 'git') {
+    if (arg == '?git') {
         msg.channel.send("https://github.com/amruth21")
     }
 
-    if (arg == "who" || arg == "whose" || arg == "which") {
+    if (arg == "?who" || arg == "?whose" || arg == "?which") {
         //msg.channel.send("testing");
         var GuildMembers = msg.guild.members;
         //console.log(lengthy);
@@ -83,7 +85,7 @@ bot.on('message', function(msg) {
         msg.channel.send(person);
     }
 
-    if (arg == "is" || arg == "will" || arg == "did") {
+    if (arg == "?is" || arg == "?will" || arg == "?did") {
         var answer;
         if (Math.floor(Math.random() * 10) >= 5) {
             answer = "yes";
