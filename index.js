@@ -20,6 +20,9 @@ fs.readFile(filePath, 'utf8', function(err, contents) {
     }
 });
 */
+var j = schedule.scheduleJob('*/1 * * * *' , function () {
+    msg.channel.send('ETH Price');
+});
 
 bot.on('ready', function() {
     console.log("It's Working");
@@ -97,5 +100,6 @@ bot.on('message', function(msg) {
     
 
 });
+
 
 bot.login(process.env.BOT_TOKEN);
