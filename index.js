@@ -31,7 +31,7 @@ bot.on('message', function(msg) {
     //console.log(args);
     var argx = ((args[0].toString()).toLowerCase());
     var arg = msg.split(' ')[0];
-    console.log(arg);
+    msg.channel.send(arg);
     if (arg =='?destroy') {
         msg.channel.send("Bot Restarting...")
         bot.destroy();
