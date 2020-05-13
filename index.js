@@ -12,8 +12,11 @@ const PREFIX = '?';
 
 const job = new CronJob('*/10 * * * * *', function () {
     msg.channel.send('every 10 seconds');
-});
-job.start();
+},
+null,
+    true,
+    'America/Los_Angeles');
+
 
 /*
 fs.readFile(filePath, 'utf8', function(err, contents) {
