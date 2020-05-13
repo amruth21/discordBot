@@ -30,7 +30,7 @@ bot.on('message', function(msg) {
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
     //console.log(args);
     var arg = ((args[0].toString()).toLowerCase());
-
+    msg.channel.send(arg);
     if (arg =='destroy') {
         bot.destroy();
         bot.login(process.env.BOT_TOKEN);
@@ -55,7 +55,7 @@ bot.on('message', function(msg) {
     }
 
     if (arg == 'help') {
-        msg.channel.send("Availible commands are scuffed(?date, ?test, ?git). This was a waste of my time. If you do ?(Insert Who Question) it will return a person from server. So scuffed smh.");
+        msg.channel.send("Availible commands are (?date, ?test, ?git) and some question based commands for fun!");
     }
 
     if (arg == 'git') {
@@ -81,7 +81,7 @@ bot.on('message', function(msg) {
         var person = mems[Math.floor(Math.random() * mems.length)];
         msg.channel.send(person);
     }
-
+    /*
     if (arg == "is" || "will" || "did") {
         var answer;
         if (Math.floor(Math.random() * 10) >= 5) {
@@ -91,6 +91,7 @@ bot.on('message', function(msg) {
         }
         msg.channel.send(answer);
     }
+    */
 
 });
 
