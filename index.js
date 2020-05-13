@@ -63,7 +63,7 @@ bot.on('message', function(msg) {
     }
 
     if (arg == "who" || arg == "whose" || arg == "which") {
-        msg.channel.send("testing");
+        //msg.channel.send("testing");
         var GuildMembers = msg.guild.members;
         //console.log(lengthy);
         var mems = [];
@@ -82,17 +82,17 @@ bot.on('message', function(msg) {
         var person = mems[Math.floor(Math.random() * mems.length)];
         msg.channel.send(person);
     }
-    /*
-    if (arg == "is" || "will" || "did") {
+
+    if (arg == "is" || arg == "will" || arg == "did") {
         var answer;
         if (Math.floor(Math.random() * 10) >= 5) {
-            answer = "yessss";
+            answer = "yes";
         } else {
             answer = "no";
         }
         msg.channel.send(answer);
     }
-    */
+    
 
 });
 
