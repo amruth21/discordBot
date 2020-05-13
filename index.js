@@ -10,12 +10,10 @@ var CronJob = require('cron').CronJob;
 var now = new time.Date();
 const PREFIX = '?';
 
-const job = new CronJob('*/10 * * * * *', function () {
+CronJob.schedule('*/10 * * * * *', function () {
     msg.channel.send('every 10 seconds');
-},
-null,
-    true,
-    'America/Los_Angeles');
+});
+
 
 
 /*
