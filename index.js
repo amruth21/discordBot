@@ -29,7 +29,7 @@ bot.on('ready', function() {
 
 bot.on('message', function(msg) {
     var job = new CronJob('* */1 * * * *', function () {
-        console.log('You will see this message every minute');
+        msg.channel.send('You will see this message every minute');
     }, null, true, 'America/Los_Angeles');
     job.start();
 
