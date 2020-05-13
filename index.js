@@ -26,11 +26,15 @@ bot.on('ready', function() {
 });
 
 bot.on('message', function(msg) {
-
     now.setTimezone("America/New_York");
-    let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix
+    let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
     //console.log(args);
     var arg = ((args[0].toString()).toLowerCase());
+
+    if (arg =='destroy') {
+        bot.destroy();
+    }
+
     if (arg == 'date') {
         var hours = now.getHours() % 12;
         var spec;
