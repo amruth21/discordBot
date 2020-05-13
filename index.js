@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Time = require('date-and-time');
 const time = require('time');
+var CronJob = require('cron').CronJob;
 //var filePath = path.join(__dirname, 'secret.txt'); //sike u aint getting that
 //var token = fs.readFileSync(filePath, "utf8");
 var now = new time.Date();
@@ -20,9 +21,7 @@ fs.readFile(filePath, 'utf8', function(err, contents) {
     }
 });
 */
-var j = schedule.scheduleJob('*/1 * * * *' , function () {
-    msg.channel.send('ETH Price');
-});
+
 
 bot.on('ready', function() {
     console.log("It's Working");
@@ -101,5 +100,10 @@ bot.on('message', function(msg) {
 
 });
 
+
+var job = new CronJob('* */1 * * * *', function () {
+    console.log('You will see this message every minute');
+}, null, true, 'America/Los_Angeles');
+job.start();
 
 bot.login(process.env.BOT_TOKEN);
