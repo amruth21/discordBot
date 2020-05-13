@@ -62,7 +62,7 @@ bot.on('message', function(msg) {
         msg.channel.send("https://github.com/amruth21")
     }
 
-    if (arg == "who" || "whose" || "which") {
+    if (arg == "who" || arg == "whose" || arg == "which") {
         msg.channel.send("testing");
         var GuildMembers = msg.guild.members;
         //console.log(lengthy);
