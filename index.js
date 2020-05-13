@@ -28,9 +28,10 @@ bot.on('ready', function() {
 });
 
 bot.on('message', function(msg) {
-    var job = new CronJob('*/10 * * * * *', function () {
+    CronJob.schedule('*/10 * * * * *', function () {
         msg.channel.send('You will see this message every minute');
-    }, null, true, 'America/Los_Angeles');
+    });
+    
 
     now.setTimezone("America/New_York");
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
