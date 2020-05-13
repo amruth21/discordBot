@@ -30,7 +30,7 @@ bot.on('message', function(msg) {
     let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
     //console.log(args);
     var arg = ((args[0].toString()).toLowerCase());
-    
+
     if (arg =='destroy') {
         bot.destroy();
         bot.login(process.env.BOT_TOKEN);
@@ -63,6 +63,7 @@ bot.on('message', function(msg) {
     }
 
     if (arg == "who" || args[0] == "whose" || args[0] == "which") {
+        msg.channel.send("testing");
         var GuildMembers = msg.guild.members;
         //console.log(lengthy);
         var mems = [];
