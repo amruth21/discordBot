@@ -56,11 +56,11 @@ bot.on('message', function(msg) {
         msg.channel.send("Nice bruh");
     }
 
-    if (arg == '?help') {
+    if (argx == 'help') {
         msg.channel.send("Availible commands are (?date, ?test, ?git) and some question based commands for fun!");
     }
 
-    if (arg == '?git') {
+    if (arg == 'git') {
         msg.channel.send("https://github.com/amruth21")
     }
 
