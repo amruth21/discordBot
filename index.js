@@ -1,69 +1,64 @@
+//Modules
+const axios = require('axios').default;
 const discord = require('discord.js');
 const bot = new discord.Client();
 const fs = require('fs');
 const path = require('path');
 const Time = require('date-and-time');
-const time = require('time');
-var CronJob = require('cron').CronJob;
-//var filePath = path.join(__dirname, 'secret.txt'); //sike u aint getting that
-//var token = fs.readFileSync(filePath, "utf8");
-var now = new time.Date();
+const request = require('request');
+const dotenv = require('dotenv').config({
+  path: path.resolve('password.env'),
+});
+
+//Bot constants
+const basicAuth = process.env.BASIC_AUTH
+const uri = 'umd.instructure.com/api/v1/users/self'
 const PREFIX = '?';
-
-const sch = CronJob.schedule('*/10 * * * * *', function () {
-    msg.channel.send('every 10 seconds');
-});
-
-
-
-/*
-fs.readFile(filePath, 'utf8', function(err, contents) {
-    if(err){
-        console.log('error!');
-    }
-    else{ 
-        token = contents;
-        console.log(contents);
-    }
-});
-*/
-
 
 bot.on('ready', function() {
     console.log("It's Working");
 });
 
+
 bot.on('message', function(msg) {
     
-
-    now.setTimezone("America/New_York");
-    let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix smart move by me nc
-    //console.log(args);
+    let args = msg.content.substring(PREFIX.length).split(" "); //returns the text after the prefix
     var arg = ((args[0].toString()).toLowerCase());
-    //var arg = msg.split(' ')[0];
-    //msg.channel.send(arg);
+    if(msg.content.charAt(0) != PREFIX) {
+        return;
+    }
+
+    if(arg == 'missing') {
+        msg.channel.send("🅜🅘🅢🅢🅘🅝🅖")
+        msg.channel.send("____________")
+        axios.get('https://umd.instructure.com/api/v1/users/self/todo', {headers: { 'Authorization': basicAuth}})
+        .then(res => {
+            //console.log(res.data)
+            var key = "name"
+            for(assign of res.data) {
+                if(assign.assignment.hasOwnProperty(key)) {
+                    if(assign.assignment.has_submitted_submissions == false) {
+                        msg.channel.send(assign.assignment.name)
+
+                    }
+                }
+               
+            }
+            console.log(`statusCode: ${res.status}`)
+          })
+          .catch(error => {
+            console.error(error)
+          });
+            
+    }
     if (arg =='destroy') {
         msg.channel.send("Bot Restarting...")
         bot.destroy();
         bot.login(process.env.BOT_TOKEN);
     }
 
-    if (arg == 'date') {
-        var hours = now.getHours() % 12;
-        var spec;
-        if (now.getHours >= 12) {
-            spec = "pm";
-        } else {
-            spec = "am";
-        }
-        var date = now.getDate();
-
-        msg.channel.send("The date is the " + now.getDate() + "th \nThe hour is " + hours + spec);
-        //console.log(args[0]);
-    }
-
     if (arg == 'test') {
-        msg.channel.send("Nice bruh");
+        msg.channel.send("Bot running");
     }
 
     if (arg == 'help') {
@@ -108,7 +103,20 @@ bot.on('message', function(msg) {
 
 });
 
-
-
-
 bot.login(process.env.BOT_TOKEN);
+
+
+/*
+var filePath = path.join(__dirname, 'secret.txt'); //sike u aint getting that
+var token = fs.readFileSync(filePath, "utf8");
+
+fs.readFile(filePath, 'utf8', function(err, contents) {
+    if(err){
+        console.log('error!');
+    }
+    else{ 
+        token = contents;
+        console.log(contents);
+    }
+});
+*/
